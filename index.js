@@ -1,16 +1,24 @@
 const express = require('express');
-const app = express();
-const { sequelize } = require('./models');
+const db = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
+const { startVenom } = require('./venomClient');
+
+const app = express();
+const PORT = 3000;
 
 app.use(express.json());
-app.use('/api/users', userRoutes); // API base URL
+app.use('/api/users', userRoutes);
 
-sequelize.authenticate().then(() => {
-  console.log("✅ Database connected.");
-  app.listen(3000, () => {
-    console.log("🚀 Server is running at http://localhost:3000");
+db.authenticate()
+  .then(() => {
+    console.log('✅ Database connected.');
+
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running at http://localhost:${PORT}`);
+    });
+
+    startVenom(); // ← Start WhatsApp client once DB is up
+  })
+  .catch((err) => {
+    console.error('❌ DB connection failed:', err);
   });
-}).catch((err) => {
-  console.error("❌ Unable to connect to database:", err);
-});

@@ -1,62 +1,56 @@
-// routes/userRoutes.js
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
+const { getClient } = require('../venomClient'); // ← Use existing Venom client
 
-// Utility: Generate a 6-digit numeric OTP
+// Generate 6-digit OTP
 const generateOTP = () => Math.floor(100000 + Math.random() * 900000);
 
 // POST /api/users/send-otp
 router.post('/send-otp', async (req, res) => {
-  const { email } = req.body;
+  const { email, phone } = req.body;
 
-  if (!email) {
-    return res.status(400).json({ message: 'Email address is required.' });
+  if (!email || !phone) {
+    return res.status(400).json({ message: 'Email and phone are required.' });
   }
 
   const otp = generateOTP();
+  const otpMessage = `Your OTP code is: ${otp}`;
 
-  // Configure mail transporter (Gmail with app password)
+  // Email transporter
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'maswath55@gmail.com', // Replace with sender Gmail
-      pass: 'hccq svbv cwac wgrn'   // Gmail App Password (not regular password)
+      user: 'maswath55@gmail.com',
+      pass: 'hccq svbv cwac wgrn'
     }
   });
 
-  // Mail content configuration
   const mailOptions = {
-    from: '"BrickSync" <bricksync@gmail.com>', // Display name and sender email
+    from: '"BrickSync" <bricksynce@gmail.com>',
     to: email,
-    subject: 'Your One-Time Password (OTP)',
-    html: `
-      <div style="font-family: Arial, sans-serif; font-size: 16px;">
-        <p>Dear User,</p>
-        <p>Your One-Time Password (OTP) is:</p>
-        <h2 style="color: #2e6da4;">${otp}</h2>
-        <p>Please use this code to proceed. This OTP will expire in 5 minutes.</p>
-        <br />
-        <p>Best regards,</p>
-        <p>BrickSync Team</p>
-      </div>
-    `
+    subject: 'Your OTP Code',
+    html: `<p>Your OTP code is <b>${otp}</b></p>`
   };
 
   try {
+    // Email
     await transporter.sendMail(mailOptions);
+    console.log(`📧 Sent OTP to ${email}: ${otp}`);
 
-    // ✅ In production: Save OTP with expiry in database/Redis here
+    // WhatsApp
+    const client = getClient();
+    if (client) {
+      await client.sendText(`${phone}@c.us`, otpMessage);
+      console.log(`📲 Sent OTP to WhatsApp: ${phone}`);
+    } else {
+      console.warn('⚠️ Venom client is not ready yet');
+    }
 
-    console.log(`✅ OTP sent to ${email}: ${otp}`);
-    res.status(200).json({ message: 'OTP sent successfully', email });
-
-  } catch (error) {
-    console.error('❌ Email sending error:', error);
-    res.status(500).json({
-      message: 'Failed to send OTP. Please try again later.',
-      error: error.message
-    });
+    res.status(200).json({ message: 'OTP sent via email and WhatsApp' });
+  } catch (err) {
+    console.error('❌ Error sending OTP:', err);
+    res.status(500).json({ message: 'Error sending OTP' });
   }
 });
 
