@@ -1,3 +1,6 @@
-2025/07/19-11:47:50.031 15b1cb Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/MANIFEST-000001
-2025/07/19-11:47:50.035 15b1cb Recovering log #3
-2025/07/19-11:47:50.035 15b1cb Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/000003.log 
+2025/07/19-13:42:19.894 171910 Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/MANIFEST-000001
+2025/07/19-13:42:19.896 171910 Recovering log #4
+2025/07/19-13:42:19.896 171910 Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/000004.log 
+2025/07/19-13:43:19.904 171912 Level-0 table #8: started
+2025/07/19-13:43:19.907 171912 Level-0 table #8: 14219 bytes OK
+2025/07/19-13:43:19.909 171912 Delete type=0 #4

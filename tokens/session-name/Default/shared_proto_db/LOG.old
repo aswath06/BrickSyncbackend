@@ -1,2 +1,3 @@
-2025/07/19-11:47:22.986 15a73a Creating DB /Users/aswath/Documents/brickSync/tokens/session-name/Default/shared_proto_db since it was missing.
-2025/07/19-11:47:22.989 15a73a Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/shared_proto_db/MANIFEST-000001
+2025/07/19-13:34:53.767 16f4ac Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/shared_proto_db/MANIFEST-000001
+2025/07/19-13:34:53.767 16f4ac Recovering log #3
+2025/07/19-13:34:53.767 16f4ac Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/shared_proto_db/000003.log 

@@ -10,7 +10,7 @@ const startVenom = async () => {
       undefined,
       {
         multidevice: true,
-        browserArgs: ['--headless=new'], // ✅ Fix for new Chrome versions
+        browserArgs: ['--headless=new'], // For modern Chrome
       }
     );
     console.log("✅ Venom client created");

@@ -1,2 +1,3 @@
-2025/07/19-11:47:22.956 15a786 Creating DB /Users/aswath/Documents/brickSync/tokens/session-name/Default/Session Storage since it was missing.
-2025/07/19-11:47:22.959 15a786 Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/Session Storage/MANIFEST-000001
+2025/07/19-13:34:53.740 16f4c6 Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/Session Storage/MANIFEST-000001
+2025/07/19-13:34:53.740 16f4c6 Recovering log #3
+2025/07/19-13:34:53.740 16f4c6 Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/Session Storage/000003.log 

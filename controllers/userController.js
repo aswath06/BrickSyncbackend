@@ -1,8 +1,12 @@
 const { User } = require('../models');
 
 exports.getAllUsers = async (req, res) => {
-  const users = await User.findAll();
-  res.json(users);
+  try {
+    const users = await User.findAll();
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to fetch users' });
+  }
 };
 
 exports.getUserById = async (req, res) => {

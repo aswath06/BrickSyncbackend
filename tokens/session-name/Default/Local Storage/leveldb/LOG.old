@@ -1,2 +1,3 @@
-2025/07/19-11:47:22.878 15a786 Creating DB /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb since it was missing.
-2025/07/19-11:47:22.884 15a786 Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/MANIFEST-000001
+2025/07/19-13:34:53.606 16f4c6 Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/MANIFEST-000001
+2025/07/19-13:34:53.608 16f4c6 Recovering log #4
+2025/07/19-13:34:53.608 16f4c6 Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/000004.log 

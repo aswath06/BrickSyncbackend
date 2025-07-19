@@ -1,2 +1,3 @@
-2025/07/19-11:47:25.662 15a73b Creating DB /Users/aswath/Documents/brickSync/tokens/session-name/Default/GCM Store since it was missing.
-2025/07/19-11:47:25.676 15a73b Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/GCM Store/MANIFEST-000001
+2025/07/19-13:34:56.327 16f480 Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/GCM Store/MANIFEST-000001
+2025/07/19-13:34:56.328 16f480 Recovering log #3
+2025/07/19-13:34:56.330 16f480 Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/GCM Store/000003.log 
