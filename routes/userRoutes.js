@@ -3,16 +3,20 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 const { initClient, getClient } = require('../venomClient');
 const userController = require('../controllers/userController');
+const { User } = require('../models'); // Ensure User model is imported
 
 // In-memory OTP store
 const otpStore = {};
 
 // ========== USER CRUD ROUTES ==========
+router.get('/by-phone', userController.getUserByPhone); 
 router.get('/', userController.getAllUsers);
+
 router.get('/:id', userController.getUserById);
 router.post('/', userController.createUser);
 router.put('/:id', userController.updateUser);
 router.delete('/:id', userController.deleteUser);
+// must be above
 
 // ========== Generate OTP ==========
 const generateOTP = () => Math.floor(1000 + Math.random() * 9000);
@@ -115,24 +119,25 @@ router.post('/verify-otp', (req, res) => {
   return res.status(400).json({ message: 'Incorrect OTP.' });
 });
 
+// ========== Get User by Phone ==========
 router.get('/by-phone', async (req, res) => {
   const { phone } = req.query;
 
   if (!phone) {
-    return res.status(400).json({ message: 'Phone number is required' });
+    return res.status(400).json({ error: 'Phone number is required' });
   }
 
   try {
     const user = await User.findOne({ where: { phone } });
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ error: 'User not found' });
     }
 
-    return res.json(user);
-  } catch (error) {
-    console.error('Error fetching user by phone:', error);
-    return res.status(500).json({ message: 'Server error' });
+    res.status(200).json(user);
+  } catch (err) {
+    console.error('Error fetching user by phone:', err);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 

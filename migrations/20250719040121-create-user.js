@@ -24,6 +24,12 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
+      // Inside up method
+phone: {
+  type: Sequelize.STRING,
+  allowNull: true,
+},
+
       userrole: {
         type: Sequelize.INTEGER
       },
@@ -31,6 +37,7 @@ module.exports = {
         type: Sequelize.JSON,
         allowNull: true
       },
+      
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
