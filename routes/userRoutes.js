@@ -1,40 +1,38 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
-const { getClient } = require('../venomClient');
-const userController = require('../controllers/userController'); // Sequelize CRUD
+const { initClient, getClient } = require('../venomClient');
+const userController = require('../controllers/userController');
 
-// =========================
-// USER CRUD ROUTES (DB)
-// =========================
+// In-memory OTP store
+const otpStore = {};
 
+// ========== USER CRUD ROUTES ==========
 router.get('/', userController.getAllUsers);
 router.get('/:id', userController.getUserById);
 router.post('/', userController.createUser);
 router.put('/:id', userController.updateUser);
 router.delete('/:id', userController.deleteUser);
 
-// =========================
-// SEND OTP ROUTE
-// =========================
+// ========== Generate OTP ==========
+const generateOTP = () => Math.floor(1000 + Math.random() * 9000);
 
-const generateOTP = () => Math.floor(100000 + Math.random() * 900000);
+// ========== Send OTP via Email ==========
+router.post('/send-otp/email', async (req, res) => {
+  const { email } = req.body;
 
-router.post('/send-otp', async (req, res) => {
-  const { email, phone } = req.body;
-
-  if (!email || !phone) {
-    return res.status(400).json({ message: 'Email and phone are required.' });
+  if (!email) {
+    return res.status(400).json({ message: 'Email is required.' });
   }
 
   const otp = generateOTP();
-  const otpMessage = `Your OTP code is: ${otp}`;
+  otpStore[email] = { otp, createdAt: Date.now() };
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: 'maswath55@gmail.com',
-      pass: 'hccq svbv cwac wgrn' // Use App Password, NOT your Gmail password
+      pass: 'hccq svbv cwac wgrn' // Use app password
     }
   });
 
@@ -46,23 +44,95 @@ router.post('/send-otp', async (req, res) => {
   };
 
   try {
-    // Email OTP
     await transporter.sendMail(mailOptions);
-    console.log(`📧 Sent OTP to ${email}: ${otp}`);
+    console.log(`✅ OTP sent to email (${email}): ${otp}`);
+    res.status(200).json({ message: 'OTP sent via email' });
+  } catch (err) {
+    console.error('❌ Error sending OTP email:', err);
+    res.status(500).json({ message: 'Failed to send OTP via email' });
+  }
+});
 
-    // WhatsApp OTP
-    const client = getClient();
-    if (client) {
-      await client.sendText(`${phone}@c.us`, otpMessage);
-      console.log(`📲 Sent OTP to WhatsApp: ${phone}`);
-    } else {
-      console.warn('⚠️ Venom client not ready');
+// ========== Send OTP via WhatsApp ==========
+router.post('/send-otp/whatsapp', async (req, res) => {
+  const { phone } = req.body;
+
+  if (!phone) {
+    return res.status(400).json({ message: 'Phone is required.' });
+  }
+
+  const otp = generateOTP();
+  otpStore[phone] = { otp, createdAt: Date.now() };
+  const otpMessage = `Your OTP code is: ${otp}`;
+
+  try {
+    let client = getClient();
+
+    if (!client) {
+      console.log('ℹ️ Venom client not ready — initializing...');
+      client = await initClient();
     }
 
-    res.status(200).json({ message: 'OTP sent via email and WhatsApp' });
+    if (!client) {
+      return res.status(500).json({ message: 'Venom client still not ready.' });
+    }
+
+    await client.sendText(`${phone}@c.us`, otpMessage);
+    console.log(`✅ OTP sent via WhatsApp (${phone}): ${otp}`);
+    res.status(200).json({ message: 'OTP sent via WhatsApp' });
   } catch (err) {
-    console.error('❌ Error sending OTP:', err);
-    res.status(500).json({ message: 'Error sending OTP' });
+    console.error('❌ Error sending OTP WhatsApp:', err);
+    res.status(500).json({ message: 'Failed to send OTP via WhatsApp' });
+  }
+});
+
+// ========== Verify OTP ==========
+router.post('/verify-otp', (req, res) => {
+  const { email, phone, otp } = req.body;
+  const key = email || phone;
+
+  if (!key || !otp) {
+    return res.status(400).json({ message: 'Email or Phone and OTP are required.' });
+  }
+
+  const stored = otpStore[key];
+  if (!stored) {
+    return res.status(400).json({ message: 'OTP not found. Please request a new one.' });
+  }
+
+  if (Date.now() - stored.createdAt > 5 * 60 * 1000) {
+    delete otpStore[key];
+    return res.status(400).json({ message: 'OTP expired. Please request a new one.' });
+  }
+
+  if (parseInt(otp) === stored.otp) {
+    delete otpStore[key];
+    console.log(`✅ OTP verified for ${key}`);
+    return res.status(200).json({ message: 'OTP verified successfully.' });
+  }
+
+  console.log(`❌ Incorrect OTP attempt for ${key}`);
+  return res.status(400).json({ message: 'Incorrect OTP.' });
+});
+
+router.get('/by-phone', async (req, res) => {
+  const { phone } = req.query;
+
+  if (!phone) {
+    return res.status(400).json({ message: 'Phone number is required' });
+  }
+
+  try {
+    const user = await User.findOne({ where: { phone } });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    return res.json(user);
+  } catch (error) {
+    console.error('Error fetching user by phone:', error);
+    return res.status(500).json({ message: 'Server error' });
   }
 });
 
