@@ -10,11 +10,14 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
 
+// Middleware
 app.use(cors());
 app.use(express.json());
+
+// Routes
 app.use('/api/users', userRoutes);
 
-// Local IP detection
+// Get Local IP (for logging purposes)
 const getLocalIP = () => {
   const interfaces = os.networkInterfaces();
   for (const name in interfaces) {
@@ -27,17 +30,18 @@ const getLocalIP = () => {
   return 'localhost';
 };
 
-// Error handling
+// 404 Handler
 app.use((req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
 
+// Global Error Handler
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  console.error('❌ Internal error:', err.stack);
   res.status(500).json({ message: 'Something broke!' });
 });
 
-// Start server
+// Start Server
 app.listen(PORT, HOST, async () => {
   console.log(`🚀 Server running at http://${getLocalIP()}:${PORT}`);
   try {
@@ -47,5 +51,6 @@ app.listen(PORT, HOST, async () => {
     console.error('❌ Unable to connect to the database:', error);
   }
 
+  // Start Venom client
   startVenom();
 });

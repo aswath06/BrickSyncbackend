@@ -1,4 +1,5 @@
 const { User } = require('../models');
+const jwt  = require('jsonwebtoken');
 
 // Get all users
 exports.getAllUsers = async (req, res) => {
@@ -43,11 +44,10 @@ exports.deleteUser = async (req, res) => {
   res.json({ message: 'User deleted' });
 };
 
-// Get user by phone
+// ✅ Get user by phone (updated)
 exports.getUserByPhone = async (req, res) => {
   const { phone } = req.query;
 
-  // 🔍 Log what’s coming in
   console.log('📥 Incoming query:', req.query);
   console.log('📞 Received phone:', phone);
 
@@ -61,17 +61,18 @@ exports.getUserByPhone = async (req, res) => {
       attributes: ['id', 'userid', 'name', 'email', 'phone', 'userrole']
     });
 
-    // 🧾 Log the result
     console.log('🔍 Fetched user:', user);
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      // ✅ Send "exists: false" instead of error
+      return res.status(200).json({ exists: false });
     }
+        const token = jwt.sign({ id: user.userid },'your_secret_key', { expiresIn: '1h' });
 
-    res.status(200).json(user);
+    // ✅ Send in frontend-friendly format
+    return res.status(200).json({ exists: true, user ,token }); 
   } catch (err) {
     console.error('❌ Error fetching user by phone:', err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
-

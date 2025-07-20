@@ -1,3 +1,3 @@
-2025/07/20-01:16:20.115 1e44de Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/Service Worker/Database/MANIFEST-000001
-2025/07/20-01:16:20.116 1e44de Recovering log #3
-2025/07/20-01:16:20.116 1e44de Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/Service Worker/Database/000003.log 
+2025/07/20-13:12:52.199 26220 Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/Service Worker/Database/MANIFEST-000001
+2025/07/20-13:12:52.199 26220 Recovering log #3
+2025/07/20-13:12:52.200 26220 Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/Service Worker/Database/000003.log 

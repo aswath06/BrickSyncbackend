@@ -1,3 +1,3 @@
-2025/07/20-01:16:20.169 1e4512 Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/MANIFEST-000001
-2025/07/20-01:16:20.172 1e4512 Recovering log #26
-2025/07/20-01:16:20.172 1e4512 Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/000026.log 
+2025/07/20-13:12:52.252 26263 Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/MANIFEST-000001
+2025/07/20-13:12:52.254 26263 Recovering log #36
+2025/07/20-13:12:52.254 26263 Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/000036.log 

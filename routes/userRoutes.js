@@ -3,20 +3,23 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 const { initClient, getClient } = require('../venomClient');
 const userController = require('../controllers/userController');
-const { User } = require('../models'); // Ensure User model is imported
-
+const { User } = require('../models'); // Sequelize User model
+// const {authenticateJWT} = require ('../middleware/authMiddleware')
+// import {authenticateJWT} from '../middleware/authMiddleware.jsx';
+const { authenticateJWT } = require('../middleware/authMiddleware');
+const { jwt } = require('twilio');
+// const {dotenv} = require('dotenv');
 // In-memory OTP store
 const otpStore = {};
+// dotenv.config();
 
 // ========== USER CRUD ROUTES ==========
-router.get('/by-phone', userController.getUserByPhone); 
-router.get('/', userController.getAllUsers);
-
-router.get('/:id', userController.getUserById);
+router.get('/by-phone', userController.getUserByPhone);
+router.get('/',authenticateJWT, userController.getAllUsers);
+router.get('/:id', authenticateJWT,userController.getUserById);
 router.post('/', userController.createUser);
 router.put('/:id', userController.updateUser);
 router.delete('/:id', userController.deleteUser);
-// must be above
 
 // ========== Generate OTP ==========
 const generateOTP = () => Math.floor(1000 + Math.random() * 9000);
@@ -36,7 +39,7 @@ router.post('/send-otp/email', async (req, res) => {
     service: 'gmail',
     auth: {
       user: 'maswath55@gmail.com',
-      pass: 'hccq svbv cwac wgrn' // Use app password
+      pass: 'hccq svbv cwac wgrn' // Use an app-specific password for Gmail
     }
   });
 
@@ -120,25 +123,27 @@ router.post('/verify-otp', (req, res) => {
 });
 
 // ========== Get User by Phone ==========
-router.get('/by-phone', async (req, res) => {
-  const { phone } = req.query;
+// router.get('/by-phone', async (req, res) => {
+//   const { phone } = req.query;
 
-  if (!phone) {
-    return res.status(400).json({ error: 'Phone number is required' });
-  }
+//   if (!phone) {
+//     return res.status(400).json({ error: 'Phone number is required' });
+//   }
 
-  try {
-    const user = await User.findOne({ where: { phone } });
+//   try {
+//     const user = await User.findOne({ where: { phone } });
 
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-
-    res.status(200).json(user);
-  } catch (err) {
-    console.error('Error fetching user by phone:', err);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
+//     if (!user) {
+//       return res.status(404).json({ error: 'User not found' });
+//     }
+//     const token = jwt.sign({ id: user.userid },'your_secret_key', { expiresIn: '1h' });
+//     // const token = jwt.sign({id:user.userid}),process.env.JWT_SECRET,{expiresIn: '1h'};
+//     console.log("tokens : " , token);
+//     res.status(200).json(token , user);
+//   } catch (err) {
+//     console.error('Error fetching user by phone:', err);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
 
 module.exports = router;
