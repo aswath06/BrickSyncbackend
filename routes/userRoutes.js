@@ -20,6 +20,7 @@ router.get('/:id', authenticateJWT,userController.getUserById);
 router.post('/', userController.createUser);
 router.put('/:id', userController.updateUser);
 router.delete('/:id', userController.deleteUser);
+router.get('/by-userid/:userid', userController.getUserByUserId);
 
 // ========== Generate OTP ==========
 const generateOTP = () => Math.floor(1000 + Math.random() * 9000);

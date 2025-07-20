@@ -58,7 +58,7 @@ exports.getUserByPhone = async (req, res) => {
   try {
     const user = await User.findOne({
       where: { phone },
-      attributes: ['id', 'userid', 'name', 'email', 'phone', 'userrole']
+      attributes: ['id', 'userid', 'name', 'email', 'phone', 'userrole','balance','advance','dateOfBirth','gender']
     });
 
     console.log('🔍 Fetched user:', user);
@@ -74,5 +74,29 @@ exports.getUserByPhone = async (req, res) => {
   } catch (err) {
     console.error('❌ Error fetching user by phone:', err);
     res.status(500).json({ error: 'Internal server error' });
+  }
+};
+// Get user by userid (custom field)
+exports.getUserByUserId = async (req, res) => {
+  const { userid } = req.params;
+
+  if (!userid) {
+    return res.status(400).json({ error: 'User ID is required' });
+  }
+
+  try {
+    const user = await User.findOne({
+      where: { userid },
+      attributes: ['id', 'userid', 'name', 'email', 'phone', 'userrole']
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    return res.status(200).json(user);
+  } catch (err) {
+    console.error('❌ Error fetching user by userid:', err);
+    return res.status(500).json({ error: 'Internal server error' });
   }
 };

@@ -12,5 +12,6 @@ router.delete('/:id', vehicleController.deleteVehicle);
 // Add service/refuel
 router.post('/:id/service', vehicleController.addService);
 router.post('/:id/refuel', vehicleController.addRefuel);
+router.get('/by-driver/:driverId', vehicleController.getVehiclesByDriverId);
 
 module.exports = router;

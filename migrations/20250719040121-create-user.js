@@ -47,7 +47,24 @@ phone: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
-      }
+      },balance: {
+  type: Sequelize.FLOAT,
+  defaultValue: 0,
+},
+advance: {
+  type: Sequelize.FLOAT,
+  defaultValue: 0,
+},
+dateOfBirth: {
+  type: Sequelize.DATEONLY,
+  allowNull: true,
+},
+gender: {
+  type: Sequelize.ENUM('Male', 'Female', 'Other'),
+  allowNull: true,
+},
+
+      
     });
   },
   async down(queryInterface, Sequelize) {

@@ -29,7 +29,7 @@ module.exports = {
     }
   },
 
-  // Get one vehicle
+  // Get one vehicle by ID
   getVehicleById: async (req, res) => {
     try {
       const vehicle = await Vehicle.findByPk(req.params.id, {
@@ -104,6 +104,27 @@ module.exports = {
       res.status(201).json(refuel);
     } catch (err) {
       res.status(400).json({ error: err.message });
+    }
+  },
+
+  // Get vehicles by driverId
+  getVehiclesByDriverId: async (req, res) => {
+    const { driverId } = req.params;
+
+    try {
+      const vehicles = await Vehicle.findAll({
+        where: { driverId },
+        include: [Service, Refuel],
+      });
+
+      if (!vehicles || vehicles.length === 0) {
+        return res.status(404).json({ message: 'No vehicles found for this driver' });
+      }
+
+      res.json(vehicles);
+    } catch (err) {
+      console.error('❌ Error fetching vehicles by driver:', err);
+      res.status(500).json({ error: 'Internal server error' });
     }
   },
 };
