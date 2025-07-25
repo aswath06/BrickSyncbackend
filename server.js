@@ -6,6 +6,7 @@ const userRoutes = require('./routes/userRoutes');
 const vehicleRoutes = require('./routes/vehicleRoutes');
 const { startVenom } = require('./venomClient');
 const sequelize = require('./config/db');
+const productRoutes = require('./routes/productRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +19,8 @@ app.use(express.json());
 // Routes
 app.use('/api/users', userRoutes);
 app.use('/api/vehicles', vehicleRoutes);
+app.use('/api/products', productRoutes);
+
 
 // Get Local IP (for logging purposes)
 const getLocalIP = () => {
