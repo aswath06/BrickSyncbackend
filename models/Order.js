@@ -17,13 +17,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.JSONB,
       allowNull: false,
     },
-     status: {
-      type: DataTypes.ENUM('assign', 'assigned', 'noted', 'delivered'), // ✅ Added 'noted'
+    status: {
+      type: DataTypes.ENUM('assign', 'assigned', 'noted', 'delivered'),
       allowNull: false,
       defaultValue: 'assign',
     },
     image: {
-      type: DataTypes.TEXT, // or DataTypes.STRING for just the path/URL
+      type: DataTypes.TEXT,
       allowNull: true,
     },
   }, {
