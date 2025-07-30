@@ -36,8 +36,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     statements: {
-      type: DataTypes.JSON, // Array of objects: [{ modeOfPayment, amount, date }]
+      type: DataTypes.JSON,
       allowNull: true,
+      defaultValue: [],
     },
   });
 
