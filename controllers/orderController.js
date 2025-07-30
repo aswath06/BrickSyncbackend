@@ -85,7 +85,7 @@ exports.getOrdersByUserId = async (req, res) => {
       where: { userId },
       include: [
         { model: Vehicle },
-        { model: User, attributes: ['name', 'email', 'userid'] },
+        { model: User, attributes: ['name', 'email', 'userid','phone'] },
       ],
     });
 
@@ -124,7 +124,7 @@ exports.getAllOrders = async (req, res) => {
     const orders = await Order.findAll({
       include: [
         { model: Vehicle },
-        { model: User, attributes: ['name', 'email', 'userid'] },
+        { model: User, attributes: ['name', 'email', 'userid','phone'] },
       ],
     });
     res.json(orders);
@@ -132,3 +132,49 @@ exports.getAllOrders = async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch orders' });
   }
 };
+// Get orders by vehicle number
+exports.getOrdersByVehicleNumber = async (req, res) => {
+  const { vehicleNumber } = req.params;
+
+  try {
+    const orders = await Order.findAll({
+      where: { vehicleNumber },
+      include: [
+        { model: Vehicle },
+        { model: User, attributes: ['name', 'email', 'userid','phone'] },
+      ],
+    });
+
+    res.json(orders);
+  } catch (err) {
+    console.error('❌ Error fetching orders by vehicle number:', err);
+    res.status(500).json({ message: 'Failed to fetch orders' });
+  }
+};
+
+// Update order status only
+exports.updateOrderStatus = async (req, res) => {
+  const { orderId } = req.params;
+  const { status } = req.body;
+
+  try {
+    console.log('🔧 Incoming orderId:', orderId);
+    console.log('🔧 Incoming status:', status);
+
+    const order = await Order.findOne({ where: { orderId } });
+
+    if (!order) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
+
+    order.status = status;
+    await order.save();
+
+    res.json({ message: 'Order status updated successfully', order });
+  } catch (err) {
+    console.error('❌ Error updating status:', err); // 👈 this will print the real issue
+    res.status(500).json({ message: 'Failed to update order status' });
+  }
+};
+
+

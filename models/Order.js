@@ -17,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.JSONB,
       allowNull: false,
     },
-    status: {
-      type: DataTypes.ENUM('assign', 'assigned', 'delivered'),
+     status: {
+      type: DataTypes.ENUM('assign', 'assigned', 'noted', 'delivered'), // ✅ Added 'noted'
       allowNull: false,
       defaultValue: 'assign',
     },

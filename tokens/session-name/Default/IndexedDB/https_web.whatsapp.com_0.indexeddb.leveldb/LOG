@@ -1,40 +1,40 @@
-2025/07/30-13:46:39.173 164ed4 Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/07/30-13:46:39.175 164ed4 Recovering log #8079
-2025/07/30-13:46:39.190 164ed4 Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/008079.log 
-2025/07/30-13:46:40.526 164ed2 Level-0 table #8096: started
-2025/07/30-13:46:40.541 164ed2 Level-0 table #8096: 670483 bytes OK
-2025/07/30-13:46:40.545 164ed2 Delete type=0 #8079
-2025/07/30-13:46:40.550 164ed2 Manual compaction at level-0 from '\x00\xf2\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\xf3\x00\x00\x00' @ 0 : 0; will stop at '\x00\xf2\x00\x00\x05' @ 20294104 : 1
-2025/07/30-13:46:40.550 164ed2 Compacting 1@0 + 1@1 files
-2025/07/30-13:46:40.561 164ed2 Generated table #8097@0: 13923 keys, 301425 bytes
-2025/07/30-13:46:40.562 164ed2 Generated table #8098@0: 315 keys, 9166 bytes
-2025/07/30-13:46:40.562 164ed2 Compacted 1@0 + 1@1 files => 310591 bytes
-2025/07/30-13:46:40.567 164ed2 compacted to: files[ 0 2 23 0 0 0 0 ]
-2025/07/30-13:46:40.568 164ed2 Delete type=2 #8096
-2025/07/30-13:46:40.568 164ed2 Manual compaction at level-0 from '\x00\xf2\x00\x00\x05' @ 20294104 : 1 .. '\x00\xf3\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/07/30-13:46:41.198 164ed4 Compacting 1@1 + 10@2 files
-2025/07/30-13:46:41.261 164ed4 Generated table #8099@1: 89326 keys, 2241185 bytes
-2025/07/30-13:46:41.307 164ed4 Generated table #8100@1: 54718 keys, 2217707 bytes
-2025/07/30-13:46:41.361 164ed4 Generated table #8101@1: 57587 keys, 2223917 bytes
-2025/07/30-13:46:41.391 164ed4 Generated table #8102@1: 8775 keys, 2160032 bytes
-2025/07/30-13:46:41.423 164ed4 Generated table #8103@1: 1823 keys, 2149637 bytes
-2025/07/30-13:46:41.458 164ed4 Generated table #8104@1: 4077 keys, 2155031 bytes
-2025/07/30-13:46:41.485 164ed4 Generated table #8105@1: 4812 keys, 2153000 bytes
-2025/07/30-13:46:41.540 164ed4 Generated table #8106@1: 35947 keys, 2256720 bytes
-2025/07/30-13:46:41.580 164ed4 Generated table #8107@1: 34618 keys, 2216703 bytes
-2025/07/30-13:46:41.616 164ed4 Generated table #8108@1: 13269 keys, 2153640 bytes
-2025/07/30-13:46:41.618 164ed4 Generated table #8109@1: 18 keys, 54156 bytes
-2025/07/30-13:46:41.619 164ed4 Compacted 1@1 + 10@2 files => 21981728 bytes
-2025/07/30-13:46:41.621 164ed4 compacted to: files[ 0 1 24 0 0 0 0 ]
-2025/07/30-13:46:41.621 164ed4 Delete type=2 #8088
-2025/07/30-13:46:41.621 164ed4 Delete type=2 #8089
-2025/07/30-13:46:41.621 164ed4 Delete type=2 #8087
-2025/07/30-13:46:41.621 164ed4 Delete type=2 #8092
-2025/07/30-13:46:41.621 164ed4 Delete type=2 #8086
-2025/07/30-13:46:41.621 164ed4 Delete type=2 #8090
-2025/07/30-13:46:41.621 164ed4 Delete type=2 #8084
-2025/07/30-13:46:41.622 164ed4 Delete type=2 #8085
-2025/07/30-13:46:41.622 164ed4 Delete type=2 #8091
-2025/07/30-13:46:41.622 164ed4 Delete type=2 #8082
-2025/07/30-13:46:41.622 164ed4 Delete type=2 #8097
-2025/07/30-13:46:41.622 164ed4 Delete type=2 #8083
+2025/07/30-18:44:02.451 1b1d6d Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/07/30-18:44:02.453 1b1d6d Recovering log #8482
+2025/07/30-18:44:02.464 1b1d6d Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/008482.log 
+2025/07/30-18:44:03.641 1b1d77 Level-0 table #8499: started
+2025/07/30-18:44:03.649 1b1d77 Level-0 table #8499: 396644 bytes OK
+2025/07/30-18:44:03.652 1b1d77 Delete type=0 #8482
+2025/07/30-18:44:03.653 1b1d6b Manual compaction at level-0 from '\x00\xfc\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\xfd\x00\x00\x00' @ 0 : 0; will stop at '\x00\xfc\x00\x00\x05' @ 20992345 : 1
+2025/07/30-18:44:03.653 1b1d6b Compacting 1@0 + 1@1 files
+2025/07/30-18:44:03.661 1b1d6b Generated table #8500@0: 10207 keys, 191036 bytes
+2025/07/30-18:44:03.663 1b1d6b Generated table #8501@0: 150 keys, 7112 bytes
+2025/07/30-18:44:03.663 1b1d6b Compacted 1@0 + 1@1 files => 198148 bytes
+2025/07/30-18:44:03.664 1b1d6b compacted to: files[ 0 2 37 0 0 0 0 ]
+2025/07/30-18:44:03.665 1b1d6b Delete type=2 #8499
+2025/07/30-18:44:03.665 1b1d6b Manual compaction at level-0 from '\x00\xfc\x00\x00\x05' @ 20992345 : 1 .. '\x00\xfd\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/07/30-18:44:04.311 1b1d6d Compacting 1@1 + 10@2 files
+2025/07/30-18:44:04.358 1b1d6d Generated table #8502@1: 86904 keys, 2237305 bytes
+2025/07/30-18:44:04.400 1b1d6d Generated table #8503@1: 84280 keys, 2251483 bytes
+2025/07/30-18:44:04.438 1b1d6d Generated table #8504@1: 47532 keys, 2205516 bytes
+2025/07/30-18:44:04.470 1b1d6d Generated table #8505@1: 32486 keys, 2190009 bytes
+2025/07/30-18:44:04.486 1b1d6d Generated table #8506@1: 1805 keys, 2154470 bytes
+2025/07/30-18:44:04.501 1b1d6d Generated table #8507@1: 2791 keys, 2150824 bytes
+2025/07/30-18:44:04.518 1b1d6d Generated table #8508@1: 4303 keys, 2153394 bytes
+2025/07/30-18:44:04.548 1b1d6d Generated table #8509@1: 22725 keys, 2200574 bytes
+2025/07/30-18:44:04.582 1b1d6d Generated table #8510@1: 31469 keys, 2254878 bytes
+2025/07/30-18:44:04.613 1b1d6d Generated table #8511@1: 31340 keys, 2193205 bytes
+2025/07/30-18:44:04.615 1b1d6d Generated table #8512@1: 43 keys, 46660 bytes
+2025/07/30-18:44:04.615 1b1d6d Compacted 1@1 + 10@2 files => 22038318 bytes
+2025/07/30-18:44:04.616 1b1d6d compacted to: files[ 0 1 38 0 0 0 0 ]
+2025/07/30-18:44:04.616 1b1d6d Delete type=2 #8500
+2025/07/30-18:44:04.616 1b1d6d Delete type=2 #8489
+2025/07/30-18:44:04.616 1b1d6d Delete type=2 #8488
+2025/07/30-18:44:04.616 1b1d6d Delete type=2 #8494
+2025/07/30-18:44:04.616 1b1d6d Delete type=2 #8495
+2025/07/30-18:44:04.616 1b1d6d Delete type=2 #8485
+2025/07/30-18:44:04.616 1b1d6d Delete type=2 #8491
+2025/07/30-18:44:04.616 1b1d6d Delete type=2 #8490
+2025/07/30-18:44:04.616 1b1d6d Delete type=2 #8492
+2025/07/30-18:44:04.616 1b1d6d Delete type=2 #8486
+2025/07/30-18:44:04.616 1b1d6d Delete type=2 #8487
+2025/07/30-18:44:04.616 1b1d6d Delete type=2 #8493
