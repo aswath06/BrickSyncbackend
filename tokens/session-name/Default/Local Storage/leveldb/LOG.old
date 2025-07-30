@@ -1,18 +1,3 @@
-2025/07/25-17:01:28.966 197d9d Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/MANIFEST-000001
-2025/07/25-17:01:28.968 197d9d Recovering log #55
-2025/07/25-17:01:28.969 197d9d Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/000055.log 
-2025/07/25-17:50:51.086 197d9f Level-0 table #59: started
-2025/07/25-17:50:51.091 197d9f Level-0 table #59: 13048 bytes OK
-2025/07/25-17:50:51.094 197d9f Delete type=0 #55
-2025/07/25-17:50:51.097 197d9f Compacting 4@0 + 1@1 files
-2025/07/25-17:50:51.098 197d9f Generated table #60@0: 308 keys, 8695 bytes
-2025/07/25-17:50:51.098 197d9f Compacted 4@0 + 1@1 files => 8695 bytes
-2025/07/25-17:50:51.100 197d9f compacted to: files[ 0 1 1 0 0 0 0 ]
-2025/07/25-17:50:51.100 197d9f Delete type=2 #59
-2025/07/25-17:50:51.100 197d9f Delete type=2 #56
-2025/07/25-17:50:51.100 197d9f Delete type=2 #50
-2025/07/25-17:50:51.100 197d9f Delete type=2 #47
-2025/07/25-17:50:51.100 197d9f Delete type=2 #53
-2025/07/25-18:24:16.853 197d9f Level-0 table #62: started
-2025/07/25-18:24:16.863 197d9f Level-0 table #62: 11974 bytes OK
-2025/07/25-18:24:16.867 197d9f Delete type=0 #58
+2025/07/30-09:28:07.444 11e68e Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/MANIFEST-000001
+2025/07/30-09:28:07.446 11e68e Recovering log #74
+2025/07/30-09:28:07.446 11e68e Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/Local Storage/leveldb/000074.log 
