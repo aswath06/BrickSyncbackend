@@ -1,12 +1,17 @@
+'use strict';
+
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.addColumn('Users', 'phone', {
-      type: Sequelize.STRING,
-      allowNull: true,
-    });
+  up: async (queryInterface, Sequelize) => {
+    const tableDescription = await queryInterface.describeTable('Users');
+    if (!tableDescription.phone) {
+      return queryInterface.addColumn('Users', 'phone', {
+        type: Sequelize.STRING,
+        allowNull: true,
+      });
+    }
   },
 
-  async down(queryInterface, Sequelize) {
-    await queryInterface.removeColumn('Users', 'phone');
+  down: async (queryInterface, Sequelize) => {
+    return queryInterface.removeColumn('Users', 'phone');
   }
 };

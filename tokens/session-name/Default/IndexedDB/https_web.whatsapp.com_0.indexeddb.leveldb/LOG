@@ -1,51 +1,41 @@
-2025/07/30-22:04:05.977 1ebb35 Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/07/30-22:04:05.979 1ebb35 Recovering log #8836
-2025/07/30-22:04:05.995 1ebb35 Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/008836.log 
-2025/07/30-22:04:07.373 1ebb33 Level-0 table #8856: started
-2025/07/30-22:04:07.394 1ebb33 Level-0 table #8856: 744143 bytes OK
-2025/07/30-22:04:07.396 1ebb33 Delete type=0 #8836
-2025/07/30-22:04:07.405 1ebb33 Manual compaction at level-0 from ' \x07\x01\x00\x00\x00' @ 72057594037927935 : 1 .. ' \x08\x01\x00\x00\x00' @ 0 : 0; will stop at ' \x07\x01\x00\x00\x05' @ 21519061 : 1
-2025/07/30-22:04:07.405 1ebb33 Compacting 1@0 + 0@1 files
-2025/07/30-22:04:07.415 1ebb33 Generated table #8857@0: 15351 keys, 334761 bytes
-2025/07/30-22:04:07.416 1ebb33 Generated table #8858@0: 122 keys, 13882 bytes
-2025/07/30-22:04:07.416 1ebb33 Compacted 1@0 + 0@1 files => 348643 bytes
-2025/07/30-22:04:07.419 1ebb33 compacted to: files[ 0 2 14 0 0 0 0 ]
-2025/07/30-22:04:07.420 1ebb33 Delete type=2 #8856
-2025/07/30-22:04:07.420 1ebb33 Manual compaction at level-0 from ' \x07\x01\x00\x00\x05' @ 21519061 : 1 .. ' \x08\x01\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/07/30-22:04:08.035 1ebb35 Compacting 1@1 + 10@2 files
-2025/07/30-22:04:08.099 1ebb35 Generated table #8859@1: 88069 keys, 2239446 bytes
-2025/07/30-22:04:08.158 1ebb35 Generated table #8860@1: 100152 keys, 2253427 bytes
-2025/07/30-22:04:08.201 1ebb35 Generated table #8861@1: 40204 keys, 2209138 bytes
-2025/07/30-22:04:08.253 1ebb35 Generated table #8862@1: 57198 keys, 2243249 bytes
-2025/07/30-22:04:08.276 1ebb35 Generated table #8863@1: 1814 keys, 2152871 bytes
-2025/07/30-22:04:08.300 1ebb35 Generated table #8864@1: 1958 keys, 2147576 bytes
-2025/07/30-22:04:08.330 1ebb35 Generated table #8865@1: 4346 keys, 2154337 bytes
-2025/07/30-22:04:08.371 1ebb35 Generated table #8866@1: 9146 keys, 2161217 bytes
-2025/07/30-22:04:08.416 1ebb35 Generated table #8867@1: 34979 keys, 2260799 bytes
-2025/07/30-22:04:08.454 1ebb35 Generated table #8868@1: 37109 keys, 2214585 bytes
-2025/07/30-22:04:08.457 1ebb35 Generated table #8869@1: 287 keys, 36042 bytes
-2025/07/30-22:04:08.457 1ebb35 Compacted 1@1 + 10@2 files => 22072687 bytes
-2025/07/30-22:04:08.458 1ebb35 compacted to: files[ 0 1 15 0 0 0 0 ]
-2025/07/30-22:04:08.458 1ebb35 Delete type=2 #8844
-2025/07/30-22:04:08.458 1ebb35 Delete type=2 #8845
-2025/07/30-22:04:08.458 1ebb35 Delete type=2 #8847
-2025/07/30-22:04:08.458 1ebb35 Delete type=2 #8846
-2025/07/30-22:04:08.458 1ebb35 Delete type=2 #8842
-2025/07/30-22:04:08.458 1ebb35 Delete type=2 #8857
-2025/07/30-22:04:08.458 1ebb35 Delete type=2 #8843
-2025/07/30-22:04:08.458 1ebb35 Delete type=2 #8841
-2025/07/30-22:04:08.458 1ebb35 Delete type=2 #8840
-2025/07/30-22:04:08.459 1ebb35 Delete type=2 #8848
-2025/07/30-22:04:08.459 1ebb35 Delete type=2 #8849
-2025/07/30-22:04:08.929 1ebb35 Compacting 1@1 + 4@2 files
-2025/07/30-22:04:08.963 1ebb35 Generated table #8870@1: 8415 keys, 2145529 bytes
-2025/07/30-22:04:09.014 1ebb35 Generated table #8871@1: 81160 keys, 2225340 bytes
-2025/07/30-22:04:09.059 1ebb35 Generated table #8872@1: 96695 keys, 2248603 bytes
-2025/07/30-22:04:09.097 1ebb35 Generated table #8873@1: 38995 keys, 946090 bytes
-2025/07/30-22:04:09.097 1ebb35 Compacted 1@1 + 4@2 files => 7565562 bytes
-2025/07/30-22:04:09.099 1ebb35 compacted to: files[ 0 0 15 0 0 0 0 ]
-2025/07/30-22:04:09.100 1ebb35 Delete type=2 #8850
-2025/07/30-22:04:09.100 1ebb35 Delete type=2 #8851
-2025/07/30-22:04:09.100 1ebb35 Delete type=2 #8853
-2025/07/30-22:04:09.100 1ebb35 Delete type=2 #8852
-2025/07/30-22:04:09.100 1ebb35 Delete type=2 #8858
+2025/07/30-23:53:27.117 20e580 Reusing MANIFEST /Users/aswath/Documents/brickSync/tokens/session-name/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/07/30-23:53:27.119 20e580 Recovering log #9002
+2025/07/30-23:53:27.128 20e580 Reusing old log /Users/aswath/Documents/brickSync/tokens/session-name/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/009002.log 
+2025/07/30-23:53:28.781 20e57e Level-0 table #9018: started
+2025/07/30-23:53:28.792 20e57e Level-0 table #9018: 408872 bytes OK
+2025/07/30-23:53:28.795 20e57e Delete type=0 #9002
+2025/07/30-23:53:28.798 20e57e Manual compaction at level-0 from ' \x0f\x01\x00\x00\x00' @ 72057594037927935 : 1 .. ' \x10\x01\x00\x00\x00' @ 0 : 0; will stop at ' \x0f\x01\x00\x00\x05' @ 21719429 : 1
+2025/07/30-23:53:28.798 20e57e Compacting 1@0 + 0@1 files
+2025/07/30-23:53:28.807 20e57e Generated table #9019@0: 10435 keys, 194285 bytes
+2025/07/30-23:53:28.808 20e57e Generated table #9020@0: 84 keys, 7113 bytes
+2025/07/30-23:53:28.808 20e57e Compacted 1@0 + 0@1 files => 201398 bytes
+2025/07/30-23:53:28.811 20e57e compacted to: files[ 0 2 16 0 0 0 0 ]
+2025/07/30-23:53:28.811 20e57e Delete type=2 #9018
+2025/07/30-23:53:28.812 20e57e Manual compaction at level-0 from ' \x0f\x01\x00\x00\x05' @ 21719429 : 1 .. ' \x10\x01\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/07/30-23:53:29.446 20e57e Compacting 1@1 + 5@2 files
+2025/07/30-23:53:29.504 20e57e Generated table #9021@1: 88488 keys, 2239371 bytes
+2025/07/30-23:53:29.557 20e57e Generated table #9022@1: 99561 keys, 2252969 bytes
+2025/07/30-23:53:29.592 20e57e Generated table #9023@1: 51865 keys, 2221493 bytes
+2025/07/30-23:53:29.636 20e57e Generated table #9024@1: 57627 keys, 2223050 bytes
+2025/07/30-23:53:29.658 20e57e Generated table #9025@1: 8678 keys, 2160216 bytes
+2025/07/30-23:53:29.660 20e57e Generated table #9026@1: 38 keys, 49812 bytes
+2025/07/30-23:53:29.660 20e57e Compacted 1@1 + 5@2 files => 11146911 bytes
+2025/07/30-23:53:29.662 20e57e compacted to: files[ 0 1 17 0 0 0 0 ]
+2025/07/30-23:53:29.662 20e57e Delete type=2 #9019
+2025/07/30-23:53:29.662 20e57e Delete type=2 #9008
+2025/07/30-23:53:29.662 20e57e Delete type=2 #9009
+2025/07/30-23:53:29.662 20e57e Delete type=2 #9010
+2025/07/30-23:53:29.662 20e57e Delete type=2 #9007
+2025/07/30-23:53:29.662 20e57e Delete type=2 #9006
+2025/07/30-23:53:30.430 20e580 Compacting 1@1 + 4@2 files
+2025/07/30-23:53:30.463 20e580 Generated table #9027@1: 18734 keys, 2164153 bytes
+2025/07/30-23:53:30.505 20e580 Generated table #9028@1: 66453 keys, 2204414 bytes
+2025/07/30-23:53:30.546 20e580 Generated table #9029@1: 96490 keys, 2246716 bytes
+2025/07/30-23:53:30.585 20e580 Generated table #9030@1: 54734 keys, 1317673 bytes
+2025/07/30-23:53:30.585 20e580 Compacted 1@1 + 4@2 files => 7932956 bytes
+2025/07/30-23:53:30.587 20e580 compacted to: files[ 0 0 17 0 0 0 0 ]
+2025/07/30-23:53:30.587 20e580 Delete type=2 #9020
+2025/07/30-23:53:30.587 20e580 Delete type=2 #9013
+2025/07/30-23:53:30.588 20e580 Delete type=2 #9012
+2025/07/30-23:53:30.588 20e580 Delete type=2 #9015
+2025/07/30-23:53:30.588 20e580 Delete type=2 #9014

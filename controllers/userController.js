@@ -58,21 +58,30 @@ exports.deleteUser = async (req, res) => {
 
 // Get user by phone
 exports.getUserByPhone = async (req, res) => {
-  const { phone } = req.query;
-  if (!phone) return res.status(400).json({ error: 'Phone number is required' });
-
   try {
+    const phone = String(req.query.phone); // 👈 force string
+
+    if (!phone) {
+      return res.status(400).json({ error: 'Phone number is required' });
+    }
+
     const user = await User.findOne({
       where: { phone },
       attributes: ['id', 'userid', 'name', 'email', 'phone', 'userrole', 'balance', 'advance', 'dateOfBirth', 'gender']
     });
 
-    if (!user) return res.status(200).json({ exists: false });
+    if (!user) {
+      return res.status(200).json({ exists: false });
+    }
 
-    const token = jwt.sign({ id: user.userid }, 'your_secret_key', { expiresIn: '1h' });
-    res.status(200).json({ exists: true, user, token });
+    const token = jwt.sign({ id: user.userid }, process.env.JWT_SECRET || 'your_secret_key', {
+      expiresIn: '1h'
+    });
+
+    return res.status(200).json({ exists: true, user, token });
   } catch (err) {
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('❌ Error in getUserByPhone:', err);
+    return res.status(500).json({ error: 'Internal server error' });
   }
 };
 

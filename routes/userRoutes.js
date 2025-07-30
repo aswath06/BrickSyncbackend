@@ -22,6 +22,7 @@ router.post('/add-statement/:userId', userController.addStatement);
 router.get('/statements/:userId', userController.getUserStatements);
 router.get('/:userId', userController.getUserById);
 
+
 // ========== OTP GENERATION ==========
 const generateOTP = () => Math.floor(1000 + Math.random() * 9000);
 

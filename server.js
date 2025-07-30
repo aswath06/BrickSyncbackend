@@ -4,10 +4,10 @@ const cors = require('cors');
 const os = require('os');
 const userRoutes = require('./routes/userRoutes');
 const vehicleRoutes = require('./routes/vehicleRoutes');
-const { startVenom } = require('./venomClient');
-const sequelize = require('./config/db');
 const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/order');
+const { startVenom } = require('./venomClient');
+const sequelize = require('./config/db');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,7 +22,6 @@ app.use('/api/users', userRoutes);
 app.use('/api/vehicles', vehicleRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
-
 
 // Get Local IP (for logging purposes)
 const getLocalIP = () => {
@@ -51,11 +50,15 @@ app.use((err, req, res, next) => {
 // Start Server
 app.listen(PORT, HOST, async () => {
   console.log(`🚀 Server running at http://${getLocalIP()}:${PORT}`);
+
   try {
     await sequelize.authenticate();
-    console.log('✅ Connected to MySQL database');
+    console.log('✅ Connected to PostgreSQL database');
+    // Optionally sync models:
+    // await sequelize.sync();
+    // console.log('📦 All models were synchronized successfully.');
   } catch (error) {
-    console.error('❌ Unable to connect to the database:', error);
+    console.error('❌ Unable to connect to the PostgreSQL database:', error);
   }
 
   // Start Venom client
