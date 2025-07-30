@@ -1,13 +1,42 @@
 const { Order, Vehicle, User } = require('../models');
 
+
 // Create Order
+
 exports.createOrder = async (req, res) => {
   try {
     const { orderId, vehicleNumber, userId, products, image } = req.body;
 
-    // Determine status based on image
+    // 1. Determine order status
     const status = image ? 'developed' : 'assign';
 
+    // 2. Validate product array
+    if (!Array.isArray(products) || products.length === 0) {
+      return res.status(400).json({ message: 'Products list is empty or invalid' });
+    }
+
+    console.log('🛒 Products:', products);
+
+    // 3. Calculate totalAmount safely
+    const totalAmount = products.reduce((acc, item) => {
+      // Clean price (remove ₹, commas, etc.)
+      const rawPrice = typeof item.price === 'string'
+        ? item.price.replace(/[^0-9.]/g, '')
+        : item.price;
+
+      const price = parseFloat(rawPrice) || 0;
+      const quantity = parseFloat(item.quantity) || 0;
+
+      console.log(`📦 item: ${item.name || 'Unnamed'}, price: ${price}, quantity: ${quantity}, subtotal: ${price * quantity}`);
+
+      return acc + (price * quantity);
+    }, 0);
+
+    if (totalAmount === 0) {
+      return res.status(400).json({ message: 'Total amount is zero. Check product price and quantity.' });
+    }
+
+    // 4. Create the order
     const order = await Order.create({
       orderId,
       vehicleNumber,
@@ -17,12 +46,36 @@ exports.createOrder = async (req, res) => {
       image,
     });
 
+    // 5. Update user balance and statements
+    const user = await User.findOne({ where: { userid: userId } });
+
+    if (user) {
+      const currentBalance = parseFloat(user.balance) || 0;
+      const newBalance = currentBalance + totalAmount;
+
+      const newStatement = {
+        modeOfPayment: 'Order',
+        amount: totalAmount,
+        date: new Date().toISOString(),
+        orderId,
+      };
+
+      const existingStatements = Array.isArray(user.statements) ? user.statements : [];
+      user.statements = [...existingStatements, newStatement];
+      user.balance = newBalance;
+
+      await user.save();
+    }
+
     res.status(201).json(order);
   } catch (err) {
-    console.error(err);
+    console.error('❌ Order error:', err);
     res.status(500).json({ message: 'Failed to create order' });
   }
 };
+
+
+
 
 // Get orders by userId
 exports.getOrdersByUserId = async (req, res) => {
