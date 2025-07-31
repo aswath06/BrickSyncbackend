@@ -54,9 +54,7 @@ app.listen(PORT, HOST, async () => {
   try {
     await sequelize.authenticate();
     console.log('✅ Connected to PostgreSQL database');
-    // Optionally sync models:
-    // await sequelize.sync();
-    // console.log('📦 All models were synchronized successfully.');
+    // Optional: await sequelize.sync();
   } catch (error) {
     console.error('❌ Unable to connect to the PostgreSQL database:', error);
   }
