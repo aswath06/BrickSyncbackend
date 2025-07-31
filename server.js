@@ -7,7 +7,8 @@ const vehicleRoutes = require('./routes/vehicleRoutes');
 const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/order');
 const { startVenom } = require('./venomClient');
-const sequelize = require('./config/db');
+const { sequelize } = require('./models');
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
